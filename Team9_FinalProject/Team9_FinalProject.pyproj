@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>bb0aad12-ca03-4772-914f-f2d3b7914142</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Team9_FinalProject.py</StartupFile>
+    <StartupFile>mainPackage\main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,40 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Team9_FinalProject.py" />
+    <Compile Include="groupimagePackage\groupimage.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="locationPackage\location.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mainPackage\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mainPackage\main.py" />
+    <Compile Include="groupimagePackage\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="locationPackage\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="moviePackage\movie.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="moviePackage\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="mainPackage\" />
+    <Folder Include="groupimagePackage\" />
+    <Folder Include="locationPackage\" />
+    <Folder Include="moviePackage\" />
+    <Folder Include="data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\EncryptedGroupHints Spring 2025.json" />
+    <Content Include="data\TeamsAndEncryptedMessagesForDistribution.json" />
+    <Content Include="data\UCEnglish.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
