@@ -16,78 +16,24 @@ from data import *
 
 import json
 
-class LocationDecryptor:
-    def __init__(self, english_file_path, encrypted_file_path):
-        """
-        Initializes the LocationDecryptor with the paths to the English word list
-        and the encrypted location data.
- 
-        Args:
-            english_file_path (str): Path to the UC English text file.
-            encrypted_file_path (str): Path to the JSON file containing encrypted location hints.
-        """
-        self.english_file_path = english_file_path
-        self.encrypted_file_path = encrypted_file_path
-        self.word_list = self._load_word_list()
- 
-    def _load_word_list(self):
-        """
-        Loads the words and symbols from the English text file into a list.
- 
-        Returns:
-            list: A list where each element is a line from the English text file.
-        """
-        try:
-            with open(self.english_file_path, 'r', encoding='utf-8') as f:
-                return [line.strip() for line in f]
-        except FileNotFoundError:
-            print(f"Error: English file not found at {self.english_file_path}")
-            return []
- 
-    def _load_encrypted_data(self):
-        """
-        Loads the encrypted location data from the JSON file.
- 
-        Returns:
-            list or None: A list of strings (representing indices) from the JSON file,
-                           or None if the file is not found or JSON is invalid.
-        """
-        try:
-            with open(self.encrypted_file_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                return data.get("encrypted_location")  # Assuming the JSON has a key "encrypted_location"
-        except FileNotFoundError:
-            print(f"Error: Encrypted data file not found at {self.encrypted_file_path}")
-            return None
-        except json.JSONDecodeError:
-            print(f"Error: Could not decode JSON from {self.encrypted_file_path}")
-            return None
- 
-    def decrypt_location(self):
-        """
-        Extracts and decrypts the location data.
- 
-        Returns:
-            str or None: The decrypted location string, or None if there was an error
-                         loading files or decrypting.
-        """
-        encrypted_data = self._load_encrypted_data()
-        if encrypted_data is None or not self.word_list:
-            return None
- 
-        decrypted_parts = []
-        for index_str in encrypted_data:
-            try:
-                index = int(index_str)
-                if 0 <= index < len(self.word_list):
-                    decrypted_parts.append(self.word_list[index])
-                else:
-                    print(f"Warning: Index {index} is out of bounds in the English word list.")
-                    return None 
-            except ValueError:
-                print(f"Warning: Invalid index '{index_str}' found in the encrypted data.")
-                return None 
- 
-        return " ".join(decrypted_parts)
+def decrypt_location_for_team():
+    team_name = "Opal Fleener"
+    english_file = "data/UCEnglish.txt"
+    encrypted_file = "data/EncryptedGroupHints Spring 2025.json"
 
- 
+    try:
+        with open(english_file, 'r', encoding='utf-8') as f:
+            word_list = [line.strip() for line in f]
+
+        with open(encrypted_file, 'r', encoding='utf-8') as f:
+            encrypted_data = json.load(f)
+            indices = encrypted_data.get(team_name)
+
+        if not indices:
+            return "Team not found."
+
+        words = [word_list[int(i)] for i in indices]
+        return " ".join(words)
+
+    except Exception as e:
+        return f"Error: {e}"
