@@ -11,3 +11,19 @@
 # Citations: {"Stack Overflow" is not sufficient. Provide repeatable links, book page #, etc.}
 
 # Anything else that's relevant:
+
+
+import os
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+class ImageDisplayer:
+    def __init__(self, filename):
+        self.image_path = os.path.join("Data", filename)
+
+    def display(self):
+        img = mpimg.imread(self.image_path)
+        plt.imshow(img)
+        plt.axis('off')  # Hide axis ticks
+        plt.title(f"Image: {os.path.basename(self.image_path)}")
+        plt.show()
