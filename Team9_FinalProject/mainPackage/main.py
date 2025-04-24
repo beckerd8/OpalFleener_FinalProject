@@ -22,5 +22,4 @@ import os
 if __name__ == "__main__":
     print(decrypt_location_for_team())
     print(decrypt_movie_for_team())
-    viewer = ImageDisplayer("groupphoto.jpg")
-    viewer.display()
+   
