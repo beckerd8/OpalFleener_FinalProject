@@ -14,8 +14,10 @@
 
 from importlib.resources import Package
 from locationPackage.location import *
+from moviePackage.movie import *
 
 import os
 
 if __name__ == "__main__":
     print(decrypt_location_for_team())
+    print(decrypt_movie_for_team())
