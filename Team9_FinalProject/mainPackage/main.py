@@ -14,6 +14,7 @@
 
 from importlib.resources import Package
 from locationPackage.location import *
+from moviePackage.movie import *
 
 
 import os
@@ -33,5 +34,7 @@ if __name__ == "__main__":
         print(f"Decrypted Location: {decrypted_location}")
     else:
         print("Could not decrypt the location.")
+
+    print(decrypt_movie_for_team())
 
 

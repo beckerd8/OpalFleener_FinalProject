@@ -11,3 +11,24 @@
 # Citations: {"Stack Overflow" is not sufficient. Provide repeatable links, book page #, etc.}
 
 # Anything else that's relevant:
+
+
+import json
+from cryptography.fernet import Fernet
+
+def decrypt_movie_for_team():
+    team_name = "Opal Fleener"
+    encrypted_file = "data/TeamsAndEncryptedMessagesForDistribution.json"
+    key = b'9VzqEQcMOT1M_Z_AmUsJQvmQNWZVx4gqOHm29Ch4RZU='
+
+    try:
+        with open(encrypted_file, 'r', encoding='utf-8') as f:
+            encrypted_data = json.load(f)
+       
+        encrypted_token = encrypted_data.get(team_name)[0]
+        fernet = Fernet(key)
+        decrypted = fernet.decrypt(encrypted_token.encode()).decode()
+        return f'Movie: "{decrypted}"'
+
+    except Exception as e:
+        return f"Error decrypting movie: {e}"
