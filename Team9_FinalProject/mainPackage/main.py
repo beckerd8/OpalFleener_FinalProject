@@ -19,7 +19,12 @@ from groupimagePackage.groupimage import *
 
 import os
 
+
+
 if __name__ == "__main__":
     print(decrypt_location_for_team())
     print(decrypt_movie_for_team())
    
+    image_filename = "groupphoto.jpg"
+    displayer = ImageDisplayer(image_filename)
+    displayer.display()
