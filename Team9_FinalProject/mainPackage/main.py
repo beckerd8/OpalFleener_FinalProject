@@ -25,6 +25,6 @@ if __name__ == "__main__":
     print(decrypt_location_for_team())
     print(decrypt_movie_for_team())
    
-    image_filename = "groupphoto.jpg"
+    image_filename = "groupimage.jpg"
     displayer = ImageDisplayer(image_filename)
     displayer.display()
